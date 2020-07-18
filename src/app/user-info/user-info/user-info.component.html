@@ -1,0 +1,57 @@
+<p>user-info works!</p>
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Datos Personales
+            </mat-panel-title>
+            <mat-panel-description>
+                Descripcion de datos personales
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngFor="let property of user['personalData'] | keyvalue"><b>{{property.key}}:</b> {{property.value}}</div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Dirección
+            </mat-panel-title>
+            <mat-panel-description>
+                Descripcion de la direccion
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngFor="let addressPart of user['address'] | keyvalue"><b>{{addressPart.key}}:</b> {{addressPart.value}}</div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="typeUser=='patient'">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Aseguradoras
+            </mat-panel-title>
+            <mat-panel-description>
+                Descripcion de las aseguradora
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <table mat-table [dataSource]="user['issurances']" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element['name']}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                <td mat-cell *matCellDef="let element"> {{element['type']}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cardNumber">
+                <th mat-header-cell *matHeaderCellDef> Numero de asegurado </th>
+                <td mat-cell *matCellDef="let element"> {{element['cardNumber']}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsIssurances"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsIssurances;"></tr>
+        </table>
+
+
+    </mat-expansion-panel>
+</mat-accordion>

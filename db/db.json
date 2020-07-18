@@ -1,0 +1,126 @@
+{
+    "users": [{
+            "id": 1,
+            "type": "professional",
+            "personalData": {
+                "noColegiado": "1",
+                "firstName": "Lara",
+                "lastName": "Perez",
+                "secondLastName": "García",
+                "gender": "Masculino",
+                "birthdate": "05/01/1975",
+                "NIF": "0000000T",
+                "professional": "Medico"
+            },
+            "address": {
+                "street": "calle Plátano",
+                "number": "7",
+                "door": "B",
+                "postalCode": "22222",
+                "city": "Madrid"
+            }
+        }, {
+            "id": 2,
+            "type": "professional",
+            "personalData": {
+                "noColegiado": "2",
+                "firstName": "Sofia",
+                "lastName": "Granda",
+                "secondLastName": "García",
+                "gender": "Masculino",
+                "birthdate": "05/01/1975",
+                "NIF": "0000000T",
+                "professional": "Medico"
+            },
+            "address": {
+                "street": "calle Plátano",
+                "number": "7",
+                "door": "B",
+                "postalCode": "22222",
+                "city": "Madrid"
+            }
+        }, {
+            "id": 3,
+            "type": "professional",
+            "personalData": {
+                "noColegiado": "3",
+                "firstName": "Ediardo",
+                "lastName": "García",
+                "secondLastName": "García",
+                "gender": "Masculino",
+                "birthdate": "05/01/1975",
+                "NIF": "0000000T",
+                "professional": "Medico"
+            },
+            "address": {
+                "street": "calle Plátano",
+                "number": "7",
+                "door": "B",
+                "postalCode": "22222",
+                "city": "Madrid"
+            }
+        },
+        {
+            "id": 4,
+            "type": "patient",
+            "personalData": {
+                "NHC": "10",
+                "firstName": "Manolo",
+                "lastName": "García",
+                "secondLastName": "García",
+                "gender": "Masculino",
+                "birthdate": "05/01/1975",
+                "NIF": "0000000T"
+            },
+            "address": {
+                "street": "calle Plátano",
+                "number": "7",
+                "door": "B",
+                "postalCode": "22222",
+                "city": "Madrid"
+            },
+            "issurances": [{
+                    "cardNumber": 11111,
+                    "name": "Seguro A",
+                    "type": "salud"
+                },
+                {
+                    "cardNumber": 22222,
+                    "name": "Seguro b",
+                    "type": "dental"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "type": "patient",
+            "personalData": {
+                "NHC": "11",
+                "firstName": "Alba",
+                "lastName": "Pérez",
+                "secondLastName": "García",
+                "gender": "Femenino",
+                "birthdate": "30/08/1991",
+                "NIF": "0000022M"
+            },
+            "address": {
+                "street": "calle Maranja",
+                "number": "7",
+                "door": "B",
+                "postalCode": "22334",
+                "city": "Madrid"
+            },
+            "issurances": [{
+                    "cardNumber": 11111,
+                    "name": "Seguro a todo riesgo",
+                    "type": "salud"
+                },
+                {
+                    "cardNumber": 22222,
+                    "name": "Seguro b",
+                    "type": "familia"
+                }
+            ]
+        }
+    ]
+}
