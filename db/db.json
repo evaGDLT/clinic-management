@@ -30,7 +30,7 @@
                 "gender": "Masculino",
                 "birthdate": "05/01/1975",
                 "NIF": "0000000T",
-                "professional": "Medico"
+                "professional": "Enfermero"
             },
             "address": {
                 "street": "calle Plátano",
@@ -50,7 +50,7 @@
                 "gender": "Masculino",
                 "birthdate": "05/01/1975",
                 "NIF": "0000000T",
-                "professional": "Medico"
+                "professional": "Administrativo"
             },
             "address": {
                 "street": "calle Plátano",

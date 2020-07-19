@@ -1,3 +1,33 @@
-table {
-    width: 100%;
+#list-users {
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+    table {
+        width: 100%;
+    }
+    .tabs {
+        width: 75vw;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #80CEB8;
+        color: white;
+        mat-tab-group {
+            border: none;
+        }
+        .mat-tab-label {
+            padding: 5px;
+            color: white;
+            font-weight: 700;
+        }
+    }
+    .buttons {
+        background-color: white;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        .mat-raised-button {
+            background-color: #2e6885;
+            color: white;
+            margin-right: 1vw;
+        }
+    }
 }

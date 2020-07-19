@@ -1,0 +1,19 @@
+.menu {
+    background-color: #2e6885;
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    .title-app {
+        cursor: pointer;
+        color: white;
+        text-align: center;
+    }
+    .options-menu {
+        text-align: end;
+        a {
+            font-size: smaller;
+            padding-left: 5vw;
+            color: #80CEB8;
+            text-decoration: none;
+        }
+    }
+}
