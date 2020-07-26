@@ -6,10 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListUsersComponent } from './list-users/list-users/list-users.component';
-import { UserInfoComponent } from './user-info/user-info/user-info.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
-import { AddUserComponent } from './add-user/add-user.component';
+import { ListUsersComponent } from './pages/list-users/list-users/list-users.component';
+import { UserInfoComponent } from './pages/user-info/user-info/user-info.component';
+import { UserEditComponent } from './pages/user-edit/user-edit.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
 
 import { HeaderComponent } from './components/header/header.component';
 

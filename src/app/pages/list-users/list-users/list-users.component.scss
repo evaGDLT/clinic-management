@@ -8,7 +8,6 @@
         width: 75vw;
         margin-left: auto;
         margin-right: auto;
-        background-color: #80CEB8;
         color: white;
         mat-tab-group {
             border: none;
@@ -17,6 +16,12 @@
             padding: 5px;
             color: white;
             font-weight: 700;
+        }
+        .mat-tab-header {
+            background-color: #80CEB8;
+        }
+        .buttons {
+            margin-top: 3vh;
         }
     }
     .buttons {

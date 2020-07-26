@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UsersService } from '../../services/users.service';
-import { Professional } from '../../models/Professional.model';
-import { Patient } from '../../models/Patient.model';
+import { UsersService } from '../../../services/users.service';
+import { Professional } from '../../../models/Professional.model';
+import { Patient } from '../../../models/Patient.model';
 
 @Component({
   selector: 'app-user-info',

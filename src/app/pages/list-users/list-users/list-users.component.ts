@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { UsersService } from '../../../services/users.service';
 import { Patient } from 'src/app/models/Patient.model';
 import { Professional } from 'src/app/models/Professional.model';
-import { isFormattedError } from '@angular/compiler';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-users',
@@ -18,7 +18,7 @@ export class ListUsersComponent implements OnInit {
 
   displayedColumnsProfessionals: string[] = ['noColegiado', 'Nombre', 'Apellido', 'Profesional', 'Opciones'];
 
-  constructor(private userService: UsersService) { 
+  constructor(private userService: UsersService, private router: Router) { 
   }
   
   ngOnInit(): void {
@@ -26,8 +26,11 @@ export class ListUsersComponent implements OnInit {
       users => {
         this.dataSourcePatients=users.filter(user=> user.type=="patient");
         this.dataSourceProfessionals=users.filter(user=> user.type=="professional");
-        
       }
     );
+  }
+  goToCreateUser(typeUser): void{
+    this.userService.setUser(typeUser);
+    this.router.navigateByUrl('/users/new');
   }
 }

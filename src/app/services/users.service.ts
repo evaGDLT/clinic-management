@@ -11,9 +11,16 @@ import { Patient } from '../models/Patient.model';
 
 export class UsersService {
   URL = 'http://localhost:3000';
+  user: string;
 
   constructor(private http: HttpClient) { }
 
+  setUser(user):void{
+    this.user=user;
+  }
+  getUser(): string{
+    return this.user;
+  }
   getUsers(): Observable<(Professional | Patient)[]>{
     return this.http.get<(Professional | Patient)[]>(this.URL + '/users');
   }

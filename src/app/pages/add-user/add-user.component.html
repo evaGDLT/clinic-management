@@ -1,0 +1,91 @@
+<div id="add-user">
+    <form [formGroup]="userForm">
+        <!--(ngSubmit)="onFormSubmit()"-->
+        <mat-tab-group class="tabs">
+            <mat-tab formGroupName="personalData" label="Datos Personales">
+                <div class="personalData-container">
+                    <mat-form-field *ngIf="userType==='patient'" appearance="legacy" hintLabel="Max 10 characters">
+                        <mat-label>NHC</mat-label>
+                        <input matInput placeholder="Número de historia" formControlName="nhc">
+                        <mat-error *ngIf="userForm.get('personalData.nhc').invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="userType==='professional'" appearance="legacy" hintLabel="Max 10 characters">
+                        <mat-label>Número Colegiado</mat-label>
+                        <input matInput placeholder="Número de colegiado" formControlName="medicalBoardNumber">
+                        <mat-error *ngIf="userForm.get('personalData.medicalBoardNumber').invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="name">
+                        <mat-error *ngIf="userForm.get('personalData.name').invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Primer apellido</mat-label>
+                        <input matInput formControlName="firstSurname">
+                        <mat-error *ngIf="userForm.get('personalData.firstSurname').invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Segundo apellido</mat-label>
+                        <input matInput formControlName="secondSurname">
+                        <mat-error *ngIf="userForm.get('personalData.secondSurname').invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Género</mat-label>
+                        <mat-select formControlName="gender">
+                            <mat-option value="femenino">Femenino</mat-option>
+                            <mat-option value="masculino">Masculino</mat-option>
+                            <mat-option value="otros">Otros</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>NIF/Pasaporte</mat-label>
+                        <input matInput formControlName="nif">
+                        <mat-error *ngIf="userForm.get('personalData.nif').invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input matInput formControlName="birthdate">
+                        <mat-hint>dd/mm/aaaa</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="userType==='professional'" appearance="legacy">
+                        <mat-label>Tipo de Profesional</mat-label>
+                        <mat-select formControlName="professional">
+                            <mat-option value="medico">Médico</mat-option>
+                            <mat-option value="enfermero">Enfermero/a</mat-option>
+                            <mat-option value="administrativo">Administrativo</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </mat-tab>
+            <mat-tab label="address" formGroupName="address">
+                <div class="address-container">
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Calle</mat-label>
+                        <input matInput formControlName="street">
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Número</mat-label>
+                        <input matInput formControlName="number">
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Puerta</mat-label>
+                        <input matInput formControlName="door">
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>CP</mat-label>
+                        <input placeholder="Código postal" matInput formControlName="postalCode">
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Ciudad</mat-label>
+                        <input matInput formControlName="city">
+                    </mat-form-field>
+                </div>
+            </mat-tab>
+            <mat-tab label="issurances">
+            </mat-tab>
+        </mat-tab-group>
+        <div class="buttons">
+            <button mat-raised-button (click)="onFormSubmit(userForm)">Crear usuario</button>
+        </div>
+    </form>
+</div>

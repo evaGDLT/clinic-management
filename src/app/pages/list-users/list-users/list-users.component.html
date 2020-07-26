@@ -1,8 +1,7 @@
 <div id="list-users">
     <mat-tab-group class="tabs">
-        <mat-tab label="Users">
-            <table mat-table [dataSource]="dataSourcePatients" class="mat-elevation-z8">
-
+        <mat-tab label="users">
+            <table mat-table [dataSource]="dataSourcePatients" class="mat-elevation-z0">
                 <!-- NHC Column -->
                 <ng-container matColumnDef="NHC">
                     <th mat-header-cell *matHeaderCellDef> NHC </th>
@@ -34,14 +33,14 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumnsPatients;"></tr>
             </table>
             <div class="buttons">
-                <button mat-raised-button [routerLink]="['/users/new']">Nuevo Paciente</button>
+                <button mat-raised-button (click)="goToCreateUser('patient')">Nuevo Paciente</button>
                 <button mat-raised-button>Eliminar Pacientes</button>
             </div>
         </mat-tab>
-
+        <!-- [routerLink]="['/users/new']" -->
 
         <mat-tab label="Profesionales">
-            <table mat-table [dataSource]="dataSourceProfessionals" class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSourceProfessionals" class="mat-elevation-z0">
 
                 <!-- nº Column -->
                 <ng-container matColumnDef="noColegiado">
@@ -79,6 +78,10 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsProfessionals"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumnsProfessionals;"></tr>
             </table>
+            <div class="buttons">
+                <button mat-raised-button (click)="goToCreateUser('professional')">Nuevo Profesional</button>
+                <button mat-raised-button>Eliminar Profesionales</button>
+            </div>
         </mat-tab>
     </mat-tab-group>
 </div>
