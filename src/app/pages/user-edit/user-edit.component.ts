@@ -8,6 +8,7 @@ import {
   AbstractControl,
   NgForm,
   Validators,
+  ValidationErrors
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users.service';
@@ -33,35 +34,33 @@ export class UserEditComponent implements OnInit {
           user=>{
             this.user = user;
             this.userType = user.type;
-            console.log("el usuario que voy a modificar es:");
-            console.log(this.user);
+            this.createNewUserForm();
           }
         )
       }
     });
     //this.userType = this.service.getUser();
-    this.userType = 'patient';
-    this.createNewUserForm();
+    //this.userType = 'patient';
+    
   }
   createNewUserForm(): void {
     if (this.userType === 'patient'){
       this.userForm = this.formBuilder.group({
         personalData : this.formBuilder.group({
-          name: ["pepe"],
-          secondSurname: ["perez"],
-          firstSurname: ["perez"],
-          nhc: ["22222"],
-          gender: [null],
-          birthdate: [null],
-          nif: [null],
-          professional: [null],
+          name: [this.user.personalData.firstName],
+          secondSurname: [this.user.personalData.secondLastName],
+          firstSurname: [this.user.personalData.lastName],
+          nhc: [this.user["personalData"]["NHC"]],
+          gender: [this.user.personalData.gender],
+          birthdate: [this.user.personalData.birthdate],
+          nif: [this.user.personalData.NIF],
         }),
         address: this.formBuilder.group({
-          city: [null],
-          door: [null],
-          street: [null],
-          number: [null],
-          postalCode: [null],
+          city: [this.user.address.city],
+          door: [this.user.address.door],
+          street: [this.user.address.street],
+          number: [this.user.address.number],
+          postalCode: [this.user.address.postalCode],
         }),
         insuranceCompanies: this.formBuilder.array([]),
       });
@@ -69,21 +68,21 @@ export class UserEditComponent implements OnInit {
     if (this.userType === 'professional'){
       this.userForm = this.formBuilder.group({
         personalData : this.formBuilder.group({
-          name: [null],
-          secondSurname: [null],
-          firstSurname: [null],
-          medicalBoardNumber: [null],
-          gender: [null],
-          birthdate: [null],
-          nif: [null],
-          professional: [null],
+          name: [this.user.personalData.firstName],
+          secondSurname: [this.user.personalData.secondLastName],
+          firstSurname: [this.user.personalData.lastName],
+          medicalBoardNumber: [this.user.personalData["medicalBoardNumber"]],
+          gender: [this.user.personalData.gender],
+          birthdate: [this.user.personalData.birthdate],
+          nif: [this.user.personalData.NIF],
+          professional: [this.user.personalData["professional"]],
         }),
         address: this.formBuilder.group({
-          city: [null],
-          door: [null],
-          street: [null],
-          number: [null],
-          postalCode: [null],
+          city: [this.user.address.city],
+          door: [this.user.address.door],
+          street: [this.user.address.street],
+          number: [this.user.address.number],
+          postalCode: [this.user.address.postalCode],
         }),
       });
     }

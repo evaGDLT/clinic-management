@@ -39,7 +39,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
-// import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 // import {MatTreeModule} from '@angular/material/tree';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
@@ -84,7 +84,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    // MatTooltipModule,
+    MatTooltipModule,
     // MatTreeModule,
     // PortalModule,
     // ScrollingModule,

@@ -8,8 +8,12 @@ import {
   AbstractControl,
   NgForm,
   Validators,
+  ValidationErrors,
+  ValidatorFn
 } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users.service';
+
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -18,7 +22,7 @@ import { UsersService } from '../../services/users.service';
 export class AddUserComponent implements OnInit {
   userForm: FormGroup = this.formBuilder.group({});
   userType: string;
-  constructor( private formBuilder: FormBuilder, private service: UsersService) { }
+  constructor( private formBuilder: FormBuilder, private service: UsersService, private router: Router) { }
   ngOnInit(): void {
     this.userType = this.service.getUser();
     this.createNewUserForm();
@@ -74,6 +78,8 @@ export class AddUserComponent implements OnInit {
   }
   onFormSubmit(form){
     console.log(form.value);
+    this.router.navigateByUrl('/users');
   }
+ 
  
 }

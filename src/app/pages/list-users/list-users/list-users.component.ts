@@ -13,12 +13,12 @@ import { MatDialog } from '@angular/material/dialog';
   encapsulation: ViewEncapsulation.None
 })
 export class ListUsersComponent implements OnInit {
-  displayedColumnsPatients: string[] = ['NHC', 'Nombre', 'Apellido', 'Opciones'];
+  displayedColumnsPatients: string[] = ['NHC', 'Nombre', 'NIF', 'Opciones'];
   
   dataSourcePatients: (Patient | Professional)[];
   dataSourceProfessionals: (Patient | Professional)[];
 
-  displayedColumnsProfessionals: string[] = ['noColegiado', 'Nombre', 'Apellido', 'Profesional', 'Opciones'];
+  displayedColumnsProfessionals: string[] = ['noColegiado', 'Nombre', 'Profesional', 'Opciones'];
 
   constructor(private userService: UsersService, private router: Router, public dialog: MatDialog) { 
   }
