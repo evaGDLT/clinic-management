@@ -27,5 +27,5 @@ export class UsersService {
   getUserById(id: string): Observable<(Patient | Professional)>{
     return this.http.get<Patient>(this.URL + '/users/' + id);
   }
-  
+
 }

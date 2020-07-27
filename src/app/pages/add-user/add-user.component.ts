@@ -18,7 +18,7 @@ import { UsersService } from '../../services/users.service';
 export class AddUserComponent implements OnInit {
   userForm: FormGroup = this.formBuilder.group({});
   userType: string;
-  constructor( private formBuilder: FormBuilder, private service:UsersService) { }
+  constructor( private formBuilder: FormBuilder, private service: UsersService) { }
   ngOnInit(): void {
     this.userType = this.service.getUser();
     this.createNewUserForm();

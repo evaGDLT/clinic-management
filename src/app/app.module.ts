@@ -10,6 +10,7 @@ import { ListUsersComponent } from './pages/list-users/list-users/list-users.com
 import { UserInfoComponent } from './pages/user-info/user-info/user-info.component';
 import { UserEditComponent } from './pages/user-edit/user-edit.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 import { HeaderComponent } from './components/header/header.component';
 
@@ -24,7 +25,8 @@ import {MaterialModule} from './material.module';
     UserInfoComponent,
     UserEditComponent,
     AddUserComponent,
-    HeaderComponent
+    HeaderComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

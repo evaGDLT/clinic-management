@@ -27,7 +27,6 @@ export class UserInfoComponent implements OnInit {
           user=>{
             this.user = user;
             this.typeUser=user.type;
-            console.log(this.user);
           }
         )
       }

@@ -3,6 +3,8 @@ import { UsersService } from '../../../services/users.service';
 import { Patient } from 'src/app/models/Patient.model';
 import { Professional } from 'src/app/models/Professional.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DialogComponent} from '../../../components/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-users',
@@ -18,7 +20,7 @@ export class ListUsersComponent implements OnInit {
 
   displayedColumnsProfessionals: string[] = ['noColegiado', 'Nombre', 'Apellido', 'Profesional', 'Opciones'];
 
-  constructor(private userService: UsersService, private router: Router) { 
+  constructor(private userService: UsersService, private router: Router, public dialog: MatDialog) { 
   }
   
   ngOnInit(): void {
@@ -32,5 +34,14 @@ export class ListUsersComponent implements OnInit {
   goToCreateUser(typeUser): void{
     this.userService.setUser(typeUser);
     this.router.navigateByUrl('/users/new');
+  }
+  openDeleteDialog(user): void{
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Borrar ' + user,
+        body: '¿Está seguro de borrar ' + user + '?',
+      },
+    });
   }
 }

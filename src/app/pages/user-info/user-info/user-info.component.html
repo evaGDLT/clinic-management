@@ -1,13 +1,10 @@
-<p>user-info works!</p>
+<!-- <p>user-info works!</p>
 <mat-accordion>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Datos Personales
             </mat-panel-title>
-            <!-- <mat-panel-description>
-                Descripcion de datos personales
-            </mat-panel-description> -->
         </mat-expansion-panel-header>
         <div *ngFor="let property of user['personalData'] | keyvalue"><b>{{property.key}}:</b> {{property.value}}</div>
     </mat-expansion-panel>
@@ -16,9 +13,6 @@
             <mat-panel-title>
                 Dirección
             </mat-panel-title>
-            <!-- <mat-panel-description>
-                Descripcion de la direccion
-            </mat-panel-description> -->
         </mat-expansion-panel-header>
         <div *ngFor="let addressPart of user['address'] | keyvalue"><b>{{addressPart.key}}:</b> {{addressPart.value}}</div>
     </mat-expansion-panel>
@@ -28,9 +22,6 @@
             <mat-panel-title>
                 Aseguradoras
             </mat-panel-title>
-            <!-- <mat-panel-description>
-                Descripcion de las aseguradora
-            </mat-panel-description> -->
         </mat-expansion-panel-header>
         <table mat-table [dataSource]="user['issurances']" class="mat-elevation-z8">
             <ng-container matColumnDef="name">
@@ -54,4 +45,38 @@
 
 
     </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
+<div id="user-info">
+    <mat-card class="card-info">
+        <mat-card-header>
+            <mat-card-title>Datos Personales</mat-card-title>
+            <mat-card-subtitle>{{user["personalData"]["firstName"]}} {{user["personalData"]["lastName"]}} {{user["personalData"]["secondLastName"]}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p *ngIf="user.type==='patient'"><b>HHC(Número de historia clínica: </b> {{user["personalData"]["NHC"]}}</p>
+            <p><b>Género: </b> {{user["personalData"]["gender"]}}</p>
+            <p><b>NIF/Pasaporte: </b> {{user["personalData"]["NIF"]}}</p>
+            <p><b>Fecha nacimiento:</b> {{user["personalData"]["birthdate"]}}</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card-info">
+        <mat-card-header>
+            <mat-card-title>Dirección</mat-card-title>
+            <mat-card-subtitle>{{user["personalData"]["firstName"]}} {{user["personalData"]["lastName"]}} {{user["personalData"]["secondLastName"]}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p><b>Calle:</b> {{user["address"]["street"]}}, {{user["address"]["number"]}}, {{user["address"]["door"]}}</p>
+            <p><b>CP(Código postal):</b> {{user["address"]["postalCode"]}}</p>
+            <p><b>Ciudad:</b> {{user["address"]["city"]}}</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card-info">
+        <mat-card-header>
+            <mat-card-title>Seguros</mat-card-title>
+            <mat-card-subtitle>Pepito pepito pepito</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            Seguros
+        </mat-card-content>
+    </mat-card>
+</div>

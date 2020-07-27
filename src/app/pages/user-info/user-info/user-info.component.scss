@@ -1,3 +1,22 @@
-table {
-    width: 100%;
+#user-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .card-info {
+        margin: 2vw;
+        padding: 3vw;
+        border: 1px solid #2e6885;
+        mat-card-header {
+            color: #2e6885
+        }
+        mat-card-content {
+            color: #787878;
+        }
+    }
+}
+
+@media(max-width: 774px) {
+    #user-info {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }
