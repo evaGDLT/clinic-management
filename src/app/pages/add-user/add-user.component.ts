@@ -24,7 +24,7 @@ export class AddUserComponent implements OnInit {
   userType: string;
   constructor( private formBuilder: FormBuilder, private service: UsersService, private router: Router) { }
   ngOnInit(): void {
-    this.userType = this.service.getUser();
+    this.userType = this.service.getUserType();
     this.createNewUserForm();
   }
   createNewUserForm(): void {

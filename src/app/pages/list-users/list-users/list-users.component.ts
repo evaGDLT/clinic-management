@@ -14,28 +14,49 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ListUsersComponent implements OnInit {
   displayedColumnsPatients: string[] = ['NHC', 'Nombre', 'NIF', 'Opciones'];
-  
-  dataSourcePatients: (Patient | Professional)[];
-  dataSourceProfessionals: (Patient | Professional)[];
-
   displayedColumnsProfessionals: string[] = ['noColegiado', 'Nombre', 'Profesional', 'Opciones'];
+  dataSourcePatients: (Patient)[];
+  dataSourceProfessionals: (Professional)[];
 
-  constructor(private userService: UsersService, private router: Router, public dialog: MatDialog) { 
-  }
+  constructor(
+    private userService: UsersService, 
+    private router: Router, 
+    public dialog: MatDialog) {}
   
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(
-      users => {
-        this.dataSourcePatients=users.filter(user=> user.type=="patient");
-        this.dataSourceProfessionals=users.filter(user=> user.type=="professional");
+    this.userService.getPatientsObs().subscribe(patients => this.dataSourcePatients = patients);
+    this.userService.getProfessionalsObs().subscribe(professionals => this.dataSourceProfessionals = professionals);
+    this.getUsers();
+  }
+
+  getUsers(): void{
+    this.userService.getPatients().subscribe(
+      patients => {
+        this.userService.setPatientsObs(patients);
+      }
+    );
+    this.userService.getProfessionals().subscribe(
+      professionals => {
+        this.userService.setProfessionalsObs(professionals);
       }
     );
   }
+
   goToCreateUser(typeUser): void{
-    this.userService.setUser(typeUser);
+    this.userService.setUserType(typeUser);
     this.router.navigateByUrl('/users/new');
   }
-  openDeleteDialog(user): void{
+
+  goToShowInfoUser(typeUser, id): void{
+    this.userService.setUserType(typeUser);
+    this.router.navigate(['/users/' , id]);
+  }
+
+  goToEditUser(typeUser, id){
+    this.userService.setUserType(typeUser);
+    this.router.navigate(['/users/'+ id +'/edit']);
+  }
+  openDeleteDialog(user, id): void{
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
       data: {
@@ -43,5 +64,19 @@ export class ListUsersComponent implements OnInit {
         body: '¿Está seguro de borrar ' + user + '?',
       },
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (user === 'patient'){
+          this.userService.deletePatientById(id).subscribe(() => {
+            this.getUsers();
+          })
+        }
+        if (user === 'professional'){
+          this.userService.deleteProfessionalById(id).subscribe(() => {
+            this.getUsers();
+          })
+        }
+      }
+    })
   }
 }

@@ -23,12 +23,20 @@ export class UserInfoComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       if (params.id){
-        this.userService.getUserById(params.id).subscribe(
-          user=>{
-            this.user = user;
-            this.typeUser=user.type;
-          }
-        )
+        if(this.userService.getUserType() === 'patient'){
+          this.userService.getPatientById(params.id).subscribe(
+            patient => {
+              this.user = patient;
+            }
+          )
+        }
+        if(this.userService.getUserType() === 'professional'){
+          this.userService.getProfessionalById(params.id).subscribe(
+            professinal => {
+              this.user = professinal;
+            }
+          )
+        }
       }
     });
   }

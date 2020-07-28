@@ -30,18 +30,25 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       if (params.id){
-        this.service.getUserById(params.id).subscribe(
-          user=>{
-            this.user = user;
-            this.userType = user.type;
-            this.createNewUserForm();
-          }
-        )
+        this.userType = this.service.getUserType();
+        if (this.userType  === 'patient'){
+          this.service.getPatientById(params.id).subscribe(
+            patient => {
+              this.user = patient;
+              this.createNewUserForm();
+            }
+          );
+        }
+        if (this.userType  === 'professional'){
+          this.service.getProfessionalById(params.id).subscribe(
+            professional => {
+              this.user = professional;
+              this.createNewUserForm();
+            }
+          );
+        }
       }
     });
-    //this.userType = this.service.getUser();
-    //this.userType = 'patient';
-    
   }
   createNewUserForm(): void {
     if (this.userType === 'patient'){
@@ -88,7 +95,7 @@ export class UserEditComponent implements OnInit {
     }
   }
 
-  onFormSubmit(form){
+  onFormSubmit (form): void{
     console.log("estos son los datos que voy a modificar:");
     console.log(form.value);
   }

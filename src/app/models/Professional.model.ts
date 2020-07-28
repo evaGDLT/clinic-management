@@ -5,7 +5,7 @@ export interface Professional{
     id?: number;
     type: string;
     personalData: {
-        noColegiado?: string;
+        medicalBoardNumber?: string;
         firstName: string;
         lastName: string;
         secondLastName?: string;
