@@ -20,7 +20,7 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-  userForm: FormGroup = this.formBuilder.group({});
+  userForm: FormGroup;
   userType: string;
   constructor( private formBuilder: FormBuilder, private service: UsersService, private router: Router) { }
   ngOnInit(): void {
@@ -31,13 +31,13 @@ export class AddUserComponent implements OnInit {
     if (this.userType === 'patient'){
       this.userForm = this.formBuilder.group({
         personalData : this.formBuilder.group({
-          name: [null, Validators.required],
+          firstName: [null, Validators.required],
           secondSurname: [null],
-          firstSurname: [null, Validators.required],
-          nhc: [null, Validators.required],
+          lastName: [null, Validators.required],
+          NHC: [null, Validators.required],
           gender: [null],
           birthdate: [null],
-          nif: [null],
+          NIF: [null],
           professional: [null],
         }),
         address: this.formBuilder.group({
@@ -53,13 +53,13 @@ export class AddUserComponent implements OnInit {
     if (this.userType === 'professional'){
       this.userForm = this.formBuilder.group({
         personalData : this.formBuilder.group({
-          name: [null, Validators.required],
+          firstName: [null, Validators.required],
           secondSurname: [null],
-          firstSurname: [null, Validators.required],
+          lastName: [null, Validators.required],
           medicalBoardNumber: [null, Validators.required],
           gender: [null],
           birthdate: [null],
-          nif: [null],
+          NIF: [null],
           professional: [null],
         }),
         address: this.formBuilder.group({
@@ -73,12 +73,23 @@ export class AddUserComponent implements OnInit {
     }
  
   }
-  getErrorMessage() {
+  getErrorMessage(): string {
     return 'Debe introducir un valor';
   }
-  onFormSubmit(form){
+  onFormSubmit(form): void{
     console.log(form.value);
-    this.router.navigateByUrl('/users');
+    if (form.status === 'VALID') {
+      if (this.userType === 'patient'){
+        this.service.insertPatient(form.value).subscribe( patient => {
+          this.router.navigateByUrl('/users');
+        });
+      }
+      if (this.userType === 'professional'){
+        this.service.insertProfessional(form.value).subscribe( professional => {
+          this.router.navigateByUrl('/users');
+        });
+      }
+    }
   }
  
  

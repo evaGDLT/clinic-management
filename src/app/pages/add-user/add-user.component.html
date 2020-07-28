@@ -6,8 +6,8 @@
                 <div class="personalData-container">
                     <mat-form-field *ngIf="userType==='patient'" appearance="legacy" hintLabel="Max 10 characters">
                         <mat-label>NHC</mat-label>
-                        <input matInput placeholder="Número de historia" formControlName="nhc">
-                        <mat-error *ngIf="userForm.get('personalData.nhc').invalid">{{getErrorMessage()}}</mat-error>
+                        <input matInput placeholder="Número de historia" formControlName="NHC">
+                        <mat-error *ngIf="userForm.get('personalData.NHC').invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field *ngIf="userType==='professional'" appearance="legacy" hintLabel="Max 10 characters">
                         <mat-label>Número Colegiado</mat-label>
@@ -16,13 +16,13 @@
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Nombre</mat-label>
-                        <input matInput formControlName="name">
-                        <mat-error *ngIf="userForm.get('personalData.name').invalid">{{getErrorMessage()}}</mat-error>
+                        <input matInput formControlName="firstName">
+                        <mat-error *ngIf="userForm.get('personalData.firstName').invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Primer apellido</mat-label>
-                        <input matInput formControlName="firstSurname">
-                        <mat-error *ngIf="userForm.get('personalData.firstSurname').invalid">{{getErrorMessage()}}</mat-error>
+                        <input matInput formControlName="lastName">
+                        <mat-error *ngIf="userForm.get('personalData.lastName').invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Segundo apellido</mat-label>
@@ -39,8 +39,8 @@
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>NIF/Pasaporte</mat-label>
-                        <input matInput formControlName="nif">
-                        <mat-error *ngIf="userForm.get('personalData.nif').invalid">{{getErrorMessage()}}</mat-error>
+                        <input matInput formControlName="NIF">
+                        <mat-error *ngIf="userForm.get('personalData.NIF').invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Fecha de nacimiento</mat-label>
@@ -85,7 +85,7 @@
             </mat-tab>
         </mat-tab-group>
         <div class="buttons">
-            <button mat-raised-button (click)="onFormSubmit(userForm)">Crear usuario</button>
+            <button mat-raised-button type="submit" (click)="onFormSubmit(userForm)">Crear usuario</button>
         </div>
     </form>
 </div>

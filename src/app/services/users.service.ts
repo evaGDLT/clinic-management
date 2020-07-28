@@ -30,16 +30,15 @@ export class UsersService {
   getPatientsObs(): Observable<Patient[]> {
     return this.patientsObs$.asObservable();
   }
-  setPatientsObs (patient: Patient[]) {
+  setPatientsObs(patient: Patient[]): void {
     this.patientsObs$.next(patient);
   }
   getProfessionalsObs(): Observable<Professional[]> {
     return this.professionalsObs$.asObservable();
   }
-  setProfessionalsObs (professional: Professional[]) {
+  setProfessionalsObs(professional: Professional[]): void {
     this.professionalsObs$.next(professional);
   }
-  
   /*
   Patient Methods
    */
@@ -52,6 +51,9 @@ export class UsersService {
   deletePatientById(id: string): Observable<Patient>{
     return this.http.delete<Patient>(this.URL + '/patients/' + id);
   }
+  insertPatient(patient: Patient): Observable<Patient>{
+    return this.http.post<Patient>(this.URL + '/patients', patient);
+  }
   /*
   Professinal Methods
    */
@@ -63,5 +65,8 @@ export class UsersService {
   }
   deleteProfessionalById(id: string): Observable<Professional>{
     return this.http.delete<Professional>(this.URL + '/professionals/' + id);
+  }
+  insertProfessional(professinal: Professional): Observable<Professional>{
+    return this.http.post<Professional>(this.URL + '/professionals', professinal);
   }
 }
