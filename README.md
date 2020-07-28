@@ -13,7 +13,7 @@ https://nodejs.org/es/
 3.Clonar el repositorio front-end
 >git clone https://github.com/evaGDLT/clinic-management.git
 
-5. Clonar repositorio back-end
+5.Clonar repositorio back-end
 >git clone https://github.com/evaGDLT/clinic-management-API.git
 
 6.Instalar dependencias en ambos proyectos:
@@ -22,7 +22,7 @@ https://nodejs.org/es/
 7.Ejecutar back-end en puerto 3000:
 >npm run start:dev
 
-6. Ejecutar front-end en puerto 4200:
+8.Ejecutar front-end en puerto 4200:
 >ng serve
 
 
