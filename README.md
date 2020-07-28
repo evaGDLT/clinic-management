@@ -10,17 +10,22 @@ https://nodejs.org/es/
 2.Instalar Angular CLI.
 >npm install -g @angular/cli
 
-3.Clonar el repositorio.
+3.Clonar el repositorio front-end
 >git clone https://github.com/evaGDLT/clinic-management.git
 
-4.Abrir el repositorio en el terminal e instalar los paquetes de Node.
+5. Clonar repositorio back-end
+>git clone https://github.com/evaGDLT/clinic-management-API.git
+
+6.Instalar dependencias en ambos proyectos:
 >npm install
 
-5. Entrar en la carpeta db y correr backend de prueba.
->json-server --watch db.json
+7.Ejecutar back-end en puerto 3000:
+>npm run start:dev
 
-6. Ejecutar aplicación en puerto 4200:
+6. Ejecutar front-end en puerto 4200:
 >ng serve
+
+
 
 
 
