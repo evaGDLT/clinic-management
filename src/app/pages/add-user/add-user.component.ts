@@ -38,7 +38,6 @@ export class AddUserComponent implements OnInit {
           gender: [null],
           birthdate: [null],
           NIF: [null],
-          professional: [null],
         }),
         address: this.formBuilder.group({
           city: [null],
@@ -77,7 +76,6 @@ export class AddUserComponent implements OnInit {
     return 'Debe introducir un valor';
   }
   onFormSubmit(form): void{
-    console.log(form.value);
     if (form.status === 'VALID') {
       if (this.userType === 'patient'){
         this.service.insertPatient(form.value).subscribe( patient => {

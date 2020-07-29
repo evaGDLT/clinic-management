@@ -5,7 +5,7 @@
                 <div class="personalData-container">
                     <mat-form-field *ngIf="userType==='patient'" appearance="legacy" hintLabel="Max 10 characters">
                         <mat-label>NHC</mat-label>
-                        <input matInput placeholder="Número de historia" formControlName="nhc">
+                        <input matInput placeholder="Número de historia" formControlName="NHC">
                     </mat-form-field>
                     <mat-form-field *ngIf="userType==='professional'" appearance="legacy" hintLabel="Max 10 characters">
                         <mat-label>Número Colegiado</mat-label>
@@ -13,11 +13,11 @@
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Nombre</mat-label>
-                        <input matInput formControlName="name">
+                        <input matInput formControlName="firstName">
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Primer apellido</mat-label>
-                        <input matInput formControlName="firstSurname">
+                        <input matInput formControlName="lastName">
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Segundo apellido</mat-label>
@@ -33,7 +33,7 @@
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>NIF/Pasaporte</mat-label>
-                        <input matInput formControlName="nif">
+                        <input matInput formControlName="NIF">
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Fecha de nacimiento</mat-label>
@@ -79,6 +79,9 @@
         </mat-tab-group>
         <div class="buttons">
             <button mat-raised-button (click)="onFormSubmit(userForm)">Editar usuario</button>
+        </div>
+        <div>
+            {{data}}
         </div>
     </form>
 </div>

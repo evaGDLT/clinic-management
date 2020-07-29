@@ -54,6 +54,9 @@ export class UsersService {
   insertPatient(patient: Patient): Observable<Patient>{
     return this.http.post<Patient>(this.URL + '/patients', patient);
   }
+  updatePatient(patient: Patient, id: string): Observable<Patient>{
+    return this.http.put<Patient>(this.URL + '/patients/' + id, patient);
+  }
   /*
   Professinal Methods
    */
@@ -68,5 +71,8 @@ export class UsersService {
   }
   insertProfessional(professinal: Professional): Observable<Professional>{
     return this.http.post<Professional>(this.URL + '/professionals', professinal);
+  }
+  updateProfessional(professional: Professional, id: string): Observable<Professional>{
+    return this.http.put<Professional>(this.URL + '/professionals/' + id, professional);
   }
 }

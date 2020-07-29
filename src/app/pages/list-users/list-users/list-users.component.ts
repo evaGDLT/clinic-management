@@ -52,7 +52,7 @@ export class ListUsersComponent implements OnInit {
     this.router.navigate(['/users/' , id]);
   }
 
-  goToEditUser(typeUser, id){
+  goToEditUser(typeUser, id): void{
     this.userService.setUserType(typeUser);
     this.router.navigate(['/users/'+ id +'/edit']);
   }

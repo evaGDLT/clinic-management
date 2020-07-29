@@ -73,7 +73,7 @@
                         <mat-icon matTooltip="Ver" (click)="goToShowInfoUser('professional', element._id)">visibility</mat-icon>
                         <!-- [routerLink]="['/users',element._id]"-->
                         <mat-icon matTooltip="Borrar" (click)="openDeleteDialog('professional', element._id)">delete</mat-icon>
-                        <mat-icon matTooltip="Editar" [routerLink]="['/users/'+ element._id +'/edit']">edit</mat-icon>
+                        <mat-icon matTooltip="Editar" (click)="goToEditUser('professional', element._id)">edit</mat-icon>
                     </td>
                 </ng-container>
 

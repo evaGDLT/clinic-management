@@ -1,7 +1,7 @@
 import { Address } from '../interfaces/Address.interface';
 import { Issurance } from '../interfaces/Issurance.interface';
 export interface Patient{
-    id?: number;
+    _id?: string;
     type: string;
     personalData: {
         NHC?: string;

@@ -25,10 +25,17 @@ export class UserEditComponent implements OnInit {
   userForm: FormGroup = this.formBuilder.group({});
   userType: string;
   user: Patient | Professional;
-  constructor(private formBuilder: FormBuilder, private service: UsersService, private route: ActivatedRoute) { }
+  id: string;
+
+  data;
+  constructor(private formBuilder: FormBuilder, 
+              private service: UsersService, 
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.id = params.id;
       if (params.id){
         this.userType = this.service.getUserType();
         if (this.userType  === 'patient'){
@@ -54,13 +61,13 @@ export class UserEditComponent implements OnInit {
     if (this.userType === 'patient'){
       this.userForm = this.formBuilder.group({
         personalData : this.formBuilder.group({
-          name: [this.user.personalData.firstName],
+          firstName: [this.user.personalData.firstName],
           secondSurname: [this.user.personalData.secondLastName],
-          firstSurname: [this.user.personalData.lastName],
-          nhc: [this.user["personalData"]["NHC"]],
+          lastName: [this.user.personalData.lastName],
+          NHC: [this.user["personalData"]["NHC"]],
           gender: [this.user.personalData.gender],
           birthdate: [this.user.personalData.birthdate],
-          nif: [this.user.personalData.NIF],
+          NIF: [this.user.personalData.NIF],
         }),
         address: this.formBuilder.group({
           city: [this.user.address.city],
@@ -75,13 +82,13 @@ export class UserEditComponent implements OnInit {
     if (this.userType === 'professional'){
       this.userForm = this.formBuilder.group({
         personalData : this.formBuilder.group({
-          name: [this.user.personalData.firstName],
+          firstName: [this.user.personalData.firstName],
           secondSurname: [this.user.personalData.secondLastName],
-          firstSurname: [this.user.personalData.lastName],
+          lastName: [this.user.personalData.lastName],
           medicalBoardNumber: [this.user.personalData["medicalBoardNumber"]],
           gender: [this.user.personalData.gender],
           birthdate: [this.user.personalData.birthdate],
-          nif: [this.user.personalData.NIF],
+          NIF: [this.user.personalData.NIF],
           professional: [this.user.personalData["professional"]],
         }),
         address: this.formBuilder.group({
@@ -95,9 +102,19 @@ export class UserEditComponent implements OnInit {
     }
   }
 
-  onFormSubmit (form): void{
-    console.log("estos son los datos que voy a modificar:");
-    console.log(form.value);
+  onFormSubmit(form): void{
+    if (form.status === 'VALID') {
+      if (this.userType === 'patient'){
+        this.service.updatePatient(form.value, this.id).subscribe( patient => {
+          this.router.navigateByUrl('/users');
+        });
+      }
+      if (this.userType === 'professional'){
+        this.service.updateProfessional(form.value, this.id).subscribe( professional => {
+          this.router.navigateByUrl('/users');
+        });
+      }
+    }
   }
 
 }

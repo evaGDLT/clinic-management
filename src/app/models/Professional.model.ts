@@ -2,7 +2,7 @@ import { Address } from '../interfaces/Address.interface';
 import { Issurance } from '../interfaces/Issurance.interface';
 type professionalType= 'Medico' | 'Enfermero' | 'Administrativo';
 export interface Professional{
-    id?: number;
+    id?: string;
     type: string;
     personalData: {
         medicalBoardNumber?: string;
