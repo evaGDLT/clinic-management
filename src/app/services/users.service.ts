@@ -11,7 +11,6 @@ import { Patient } from '../models/Patient.model';
 
 export class UsersService {
   URL = 'http://localhost:3000';//Cambiar esto a variables 
-  
   userType: string;
   private patientsObs$: BehaviorSubject<Patient[]> = new BehaviorSubject(null);
   private professionalsObs$: BehaviorSubject<Professional[]> = new BehaviorSubject(null);

@@ -1,6 +1,6 @@
 import { Address } from '../interfaces/Address.interface';
 import { Issurance } from '../interfaces/Issurance.interface';
-type professionalType= 'Medico' | 'Enfermero' | 'Administrativo';
+type professionalType= 'medico' | 'enfermero' | 'administrativo';
 export interface Professional{
     id?: string;
     type: string;
@@ -12,7 +12,7 @@ export interface Professional{
         gender?: string;
         birthdate?: string;
         NIF: string;
-        professional: professionalType;
+        professionalType: professionalType;
     };
     address: Address;
 }

@@ -25,7 +25,7 @@
                     <th mat-header-cell *matHeaderCellDef></th>
                     <td mat-cell *matCellDef="let element">
                         <mat-icon matTooltip="Ver" (click)="goToShowInfoUser('patient', element._id)">visibility</mat-icon>
-                        <mat-icon matTooltip="Borrar" (click)="openDeleteDialog('patient', element._id)">delete</mat-icon>
+                        <mat-icon matTooltip="Borrar" (click)="openDeleteDialog('paciente', element._id)">delete</mat-icon>
                         <mat-icon matTooltip="Editar" (click)="goToEditUser('patient', element._id)">edit</mat-icon>
                         <!--[routerLink]="['/users/'+ element._id +'/edit']"-->
                     </td>
@@ -35,7 +35,6 @@
             </table>
             <div class="buttons">
                 <button mat-raised-button (click)="goToCreateUser('patient')">Nuevo Paciente</button>
-                <button mat-raised-button>Eliminar Pacientes</button>
             </div>
         </mat-tab>
         <!-- [routerLink]="['/users/new']" -->
@@ -55,12 +54,6 @@
                     <td mat-cell *matCellDef="let element"> {{element.personalData.firstName}} {{element.personalData.lastName}} {{element.personalData.secondLastName}} </td>
                 </ng-container>
 
-                <!-- LatName Column -->
-                <!-- <ng-container matColumnDef="Apellido">
-                    <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-                    <td mat-cell *matCellDef="let element"> {{element.personalData.lastName}}{{element.personalData.secondLastName}} </td>
-                </ng-container> -->
-
                 <!-- Professional Column -->
                 <ng-container matColumnDef="Profesional">
                     <th mat-header-cell *matHeaderCellDef> Profesional </th>
@@ -72,7 +65,7 @@
                     <td mat-cell *matCellDef="let element">
                         <mat-icon matTooltip="Ver" (click)="goToShowInfoUser('professional', element._id)">visibility</mat-icon>
                         <!-- [routerLink]="['/users',element._id]"-->
-                        <mat-icon matTooltip="Borrar" (click)="openDeleteDialog('professional', element._id)">delete</mat-icon>
+                        <mat-icon matTooltip="Borrar" (click)="openDeleteDialog('profesional', element._id)">delete</mat-icon>
                         <mat-icon matTooltip="Editar" (click)="goToEditUser('professional', element._id)">edit</mat-icon>
                     </td>
                 </ng-container>
@@ -82,7 +75,7 @@
             </table>
             <div class="buttons">
                 <button mat-raised-button (click)="goToCreateUser('professional')">Nuevo Profesional</button>
-                <button mat-raised-button>Eliminar Profesionales</button>
+                <button mat-raised-button>Eliminar Médicos</button>
             </div>
         </mat-tab>
     </mat-tab-group>

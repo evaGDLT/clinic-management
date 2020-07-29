@@ -61,17 +61,17 @@ export class ListUsersComponent implements OnInit {
       width: '400px',
       data: {
         title: 'Borrar ' + user,
-        body: '¿Está seguro de borrar ' + user + '?',
+        body: '¿Está seguro de que desea borrar el ' + user + '?',
       },
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        if (user === 'patient'){
+        if (user === 'paciente'){
           this.userService.deletePatientById(id).subscribe(() => {
             this.getUsers();
           })
         }
-        if (user === 'professional'){
+        if (user === 'profesional'){
           this.userService.deleteProfessionalById(id).subscribe(() => {
             this.getUsers();
           })

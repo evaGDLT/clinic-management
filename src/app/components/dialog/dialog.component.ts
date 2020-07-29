@@ -21,7 +21,4 @@ export class DialogComponent {
   closeDialog(): void {
     this.dialogRef.close();
   }
-  deleteUser(){
-    
-  }
 }

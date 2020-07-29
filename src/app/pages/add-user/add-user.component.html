@@ -1,33 +1,31 @@
 <div id="add-user">
     <form [formGroup]="userForm">
-        <!--(ngSubmit)="onFormSubmit()"-->
         <mat-tab-group class="tabs">
             <mat-tab formGroupName="personalData" label="Datos Personales">
                 <div class="personalData-container">
                     <mat-form-field *ngIf="userType==='patient'" appearance="legacy" hintLabel="Max 10 characters">
                         <mat-label>NHC</mat-label>
                         <input matInput placeholder="Número de historia" formControlName="NHC">
-                        <mat-error *ngIf="userForm.get('personalData.NHC').invalid">{{getErrorMessage()}}</mat-error>
+                        <mat-error *ngIf="userForm.get('personalData.NHC').invalid">{{getFormErrorMessage('emptyValue')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field *ngIf="userType==='professional'" appearance="legacy" hintLabel="Max 10 characters">
                         <mat-label>Número Colegiado</mat-label>
                         <input matInput placeholder="Número de colegiado" formControlName="medicalBoardNumber">
-                        <mat-error *ngIf="userForm.get('personalData.medicalBoardNumber').invalid">{{getErrorMessage()}}</mat-error>
+                        <mat-error *ngIf="userForm.get('personalData.medicalBoardNumber').invalid">{{getFormErrorMessage('emptyaValue')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Nombre</mat-label>
                         <input matInput formControlName="firstName">
-                        <mat-error *ngIf="userForm.get('personalData.firstName').invalid">{{getErrorMessage()}}</mat-error>
+                        <mat-error *ngIf="userForm.get('personalData.firstName').invalid">{{getFormErrorMessage('emptyValue')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Primer apellido</mat-label>
                         <input matInput formControlName="lastName">
-                        <mat-error *ngIf="userForm.get('personalData.lastName').invalid">{{getErrorMessage()}}</mat-error>
+                        <mat-error *ngIf="userForm.get('personalData.lastName').invalid">{{getFormErrorMessage('emptyValue')}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Segundo apellido</mat-label>
                         <input matInput formControlName="secondSurname">
-                        <mat-error *ngIf="userForm.get('personalData.secondSurname').invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Género</mat-label>
@@ -40,16 +38,16 @@
                     <mat-form-field appearance="legacy">
                         <mat-label>NIF/Pasaporte</mat-label>
                         <input matInput formControlName="NIF">
-                        <mat-error *ngIf="userForm.get('personalData.NIF').invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Fecha de nacimiento</mat-label>
                         <input matInput formControlName="birthdate">
                         <mat-hint>dd/mm/aaaa</mat-hint>
+                        <mat-error *ngIf="userForm.get('personalData.birthdate').invalid">{{getFormErrorMessage("invalidFormat")}}</mat-error>
                     </mat-form-field>
                     <mat-form-field *ngIf="userType==='professional'" appearance="legacy">
                         <mat-label>Tipo de Profesional</mat-label>
-                        <mat-select formControlName="professional">
+                        <mat-select formControlName="professionalType">
                             <mat-option value="medico">Médico</mat-option>
                             <mat-option value="enfermero">Enfermero/a</mat-option>
                             <mat-option value="administrativo">Administrativo</mat-option>

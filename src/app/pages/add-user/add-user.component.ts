@@ -22,7 +22,11 @@ import { UsersService } from '../../services/users.service';
 export class AddUserComponent implements OnInit {
   userForm: FormGroup;
   userType: string;
-  constructor( private formBuilder: FormBuilder, private service: UsersService, private router: Router) { }
+  DATE_PATTERN = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/;
+  constructor( private formBuilder: FormBuilder,
+               private service: UsersService,
+               private router: Router) {
+               }
   ngOnInit(): void {
     this.userType = this.service.getUserType();
     this.createNewUserForm();
@@ -36,7 +40,7 @@ export class AddUserComponent implements OnInit {
           lastName: [null, Validators.required],
           NHC: [null, Validators.required],
           gender: [null],
-          birthdate: [null],
+          birthdate: [null, Validators.pattern(this.DATE_PATTERN)],
           NIF: [null],
         }),
         address: this.formBuilder.group({
@@ -57,9 +61,9 @@ export class AddUserComponent implements OnInit {
           lastName: [null, Validators.required],
           medicalBoardNumber: [null, Validators.required],
           gender: [null],
-          birthdate: [null],
+          birthdate: [null, Validators.pattern(this.DATE_PATTERN)],
           NIF: [null],
-          professional: [null],
+          professionalType: [null],
         }),
         address: this.formBuilder.group({
           city: [null],
@@ -72,10 +76,17 @@ export class AddUserComponent implements OnInit {
     }
  
   }
-  getErrorMessage(): string {
-    return 'Debe introducir un valor';
+  getFormErrorMessage(error: string): string {
+    if (error === 'emptyValue'){
+      return 'Debe introducir un valor';
+    }
+    if (error === 'invalidFormat'){
+      return 'Formato inválido';
+    }
   }
+
   onFormSubmit(form): void{
+    console.log(form.value);
     if (form.status === 'VALID') {
       if (this.userType === 'patient'){
         this.service.insertPatient(form.value).subscribe( patient => {

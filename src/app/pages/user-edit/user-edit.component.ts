@@ -26,8 +26,8 @@ export class UserEditComponent implements OnInit {
   userType: string;
   user: Patient | Professional;
   id: string;
+  DATE_PATTERN = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/;
 
-  data;
   constructor(private formBuilder: FormBuilder, 
               private service: UsersService, 
               private route: ActivatedRoute,
@@ -57,6 +57,14 @@ export class UserEditComponent implements OnInit {
       }
     });
   }
+  getFormErrorMessage(error: string): string {
+    if (error === 'emptyValue'){
+      return 'Debe introducir un valor';
+    }
+    if (error === 'invalidFormat'){
+      return 'Formato inválido';
+    }
+  }
   createNewUserForm(): void {
     if (this.userType === 'patient'){
       this.userForm = this.formBuilder.group({
@@ -66,7 +74,7 @@ export class UserEditComponent implements OnInit {
           lastName: [this.user.personalData.lastName],
           NHC: [this.user["personalData"]["NHC"]],
           gender: [this.user.personalData.gender],
-          birthdate: [this.user.personalData.birthdate],
+          birthdate: [this.user.personalData.birthdate, Validators.pattern(this.DATE_PATTERN)],
           NIF: [this.user.personalData.NIF],
         }),
         address: this.formBuilder.group({
@@ -87,9 +95,9 @@ export class UserEditComponent implements OnInit {
           lastName: [this.user.personalData.lastName],
           medicalBoardNumber: [this.user.personalData["medicalBoardNumber"]],
           gender: [this.user.personalData.gender],
-          birthdate: [this.user.personalData.birthdate],
+          birthdate: [this.user.personalData.birthdate, Validators.pattern(this.DATE_PATTERN)],
           NIF: [this.user.personalData.NIF],
-          professional: [this.user.personalData["professional"]],
+          professionalType: [this.user.personalData["professionalType"]],
         }),
         address: this.formBuilder.group({
           city: [this.user.address.city],
