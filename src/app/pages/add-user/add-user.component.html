@@ -79,7 +79,28 @@
                     </mat-form-field>
                 </div>
             </mat-tab>
-            <mat-tab label="issurances">
+            <mat-tab label="issurances" *ngIf="userType==='patient'" formArrayName="issurances">
+                <div *ngFor="let iss of issurances.controls; index as i">
+                    <div class="issurances-container" [formGroupName]="i">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Número de seguro</mat-label>
+                            <input matInput formControlName="cardNumber">
+                        </mat-form-field>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput formControlName="name">
+                        </mat-form-field>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Tipo de Seguro</mat-label>
+                            <mat-select formControlName="type">
+                                <mat-option value="dental">Dental</mat-option>
+                                <mat-option value="salud">Salud</mat-option>
+                                <mat-option value="familia">Familia</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button class="new-issurance-button" mat-raised-button (click)="addIssurances()">Añadir seguro</button>
             </mat-tab>
         </mat-tab-group>
         <div class="buttons">

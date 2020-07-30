@@ -27,6 +27,7 @@ export class UserEditComponent implements OnInit {
   user: Patient | Professional;
   id: string;
   DATE_PATTERN = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/;
+  issurances;
 
   constructor(private formBuilder: FormBuilder, 
               private service: UsersService, 
@@ -43,6 +44,8 @@ export class UserEditComponent implements OnInit {
             patient => {
               this.user = patient;
               this.createNewUserForm();
+              this.issurances = this.userForm.get('issurances') as FormArray;
+              console.log(this.issurances)
             }
           );
         }
@@ -57,6 +60,7 @@ export class UserEditComponent implements OnInit {
       }
     });
   }
+
   getFormErrorMessage(error: string): string {
     if (error === 'emptyValue'){
       return 'Debe introducir un valor';
@@ -84,7 +88,7 @@ export class UserEditComponent implements OnInit {
           number: [this.user.address.number],
           postalCode: [this.user.address.postalCode],
         }),
-        insuranceCompanies: this.formBuilder.array([]),
+        issurances: this.formBuilder.array(this.user["issurances"]),
       });
     }
     if (this.userType === 'professional'){
@@ -109,7 +113,13 @@ export class UserEditComponent implements OnInit {
       });
     }
   }
-
+  addIssurances(): void{
+    this.issurances.push(this.formBuilder.group({
+      name: [null],
+      type: [null],
+      cardNumber: [null]
+    }))
+  }
   onFormSubmit(form): void{
     if (form.status === 'VALID') {
       if (this.userType === 'patient'){

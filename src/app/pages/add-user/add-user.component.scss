@@ -29,6 +29,17 @@
                 padding-right: 5vw;
             }
         }
+        .issurances-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            mat-form-field {
+                padding-right: 5vw;
+            }
+        }
+        .new-issurance-button {
+            margin-left: 0vw;
+            background-color: #80CEB8
+        }
     }
     .mat-raised-button {
         background-color: #2e6885;
@@ -42,7 +53,8 @@
     #add-user {
         .tabs {
             .personalData-container,
-            .address-container {
+            .address-container,
+            .issurances-container {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
             }

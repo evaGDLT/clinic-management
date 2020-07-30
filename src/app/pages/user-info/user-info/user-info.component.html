@@ -28,10 +28,14 @@
     <mat-card class="card-info">
         <mat-card-header>
             <mat-card-title>Seguros</mat-card-title>
-            <mat-card-subtitle>Pepito pepito pepito</mat-card-subtitle>
+            <mat-card-subtitle>{{user["personalData"]["firstName"]}} {{user["personalData"]["lastName"]}} {{user["personalData"]["secondLastName"]}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            Seguros
+            <div class="issurance-div" *ngFor="let iss of user['issurances']; index as i">
+                <p><b>Nombre:</b> {{iss["name"]}}</p>
+                <p><b>Número de tarjeta:</b> {{iss["cardNumber"]}}</p>
+                <p><b>Tipo:</b> {{iss["type"]}}</p>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

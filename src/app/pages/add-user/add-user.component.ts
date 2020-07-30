@@ -22,6 +22,8 @@ import { UsersService } from '../../services/users.service';
 export class AddUserComponent implements OnInit {
   userForm: FormGroup;
   userType: string;
+  issurances;
+
   DATE_PATTERN = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/;
   constructor( private formBuilder: FormBuilder,
                private service: UsersService,
@@ -30,6 +32,7 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
     this.userType = this.service.getUserType();
     this.createNewUserForm();
+    this.issurances = this.userForm.get('issurances') as FormArray;
   }
   createNewUserForm(): void {
     if (this.userType === 'patient'){
@@ -50,7 +53,13 @@ export class AddUserComponent implements OnInit {
           number: [null],
           postalCode: [null],
         }),
-        insuranceCompanies: this.formBuilder.array([]),
+         issurances: this.formBuilder.array([
+           this.formBuilder.group({
+             name: [null],
+             type: [null],
+             cardNumber: [null]
+           })
+         ])
       });
     }
     if (this.userType === 'professional'){
@@ -75,6 +84,13 @@ export class AddUserComponent implements OnInit {
       });
     }
  
+  }
+  addIssurances(): void{
+    this.issurances.push(this.formBuilder.group({
+      name: [null],
+      type: [null],
+      cardNumber: [null]
+    }))
   }
   getFormErrorMessage(error: string): string {
     if (error === 'emptyValue'){
