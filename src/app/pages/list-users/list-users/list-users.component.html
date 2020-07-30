@@ -1,6 +1,6 @@
 <div id="list-users">
     <mat-tab-group class="tabs">
-        <mat-tab label="users">
+        <mat-tab label="Pacientes">
             <table mat-table [dataSource]="dataSourcePatients" class="mat-elevation-z0">
                 <!-- NHC Column -->
                 <ng-container matColumnDef="NHC">
@@ -27,7 +27,6 @@
                         <mat-icon matTooltip="Ver" (click)="goToShowInfoUser('patient', element._id)">visibility</mat-icon>
                         <mat-icon matTooltip="Borrar" (click)="openDeleteDialog('paciente', element._id)">delete</mat-icon>
                         <mat-icon matTooltip="Editar" (click)="goToEditUser('patient', element._id)">edit</mat-icon>
-                        <!--[routerLink]="['/users/'+ element._id +'/edit']"-->
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsPatients"></tr>
@@ -37,7 +36,6 @@
                 <button mat-raised-button (click)="goToCreateUser('patient')">Nuevo Paciente</button>
             </div>
         </mat-tab>
-        <!-- [routerLink]="['/users/new']" -->
 
         <mat-tab label="Profesionales">
             <table mat-table [dataSource]="dataSourceProfessionals" class="mat-elevation-z0">
@@ -57,14 +55,13 @@
                 <!-- Professional Column -->
                 <ng-container matColumnDef="Profesional">
                     <th mat-header-cell *matHeaderCellDef> Profesional </th>
-                    <td mat-cell *matCellDef="let element"> {{element.personalData.professional}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.personalData.professionalType}} </td>
                 </ng-container>
                 <!-- action buttons -->
                 <ng-container matColumnDef="Opciones">
                     <th mat-header-cell *matHeaderCellDef> </th>
                     <td mat-cell *matCellDef="let element">
                         <mat-icon matTooltip="Ver" (click)="goToShowInfoUser('professional', element._id)">visibility</mat-icon>
-                        <!-- [routerLink]="['/users',element._id]"-->
                         <mat-icon matTooltip="Borrar" (click)="openDeleteDialog('profesional', element._id)">delete</mat-icon>
                         <mat-icon matTooltip="Editar" (click)="goToEditUser('professional', element._id)">edit</mat-icon>
                     </td>

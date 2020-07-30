@@ -1,4 +1,4 @@
-<p class="menu">
+<p class="menu" *ngIf="router.url!='/'">
     <mat-toolbar class="menu">
         <div class="title-app" [routerLink]="['/users']">Clinic-management</div>
         <div class="options-menu">

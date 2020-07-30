@@ -5,10 +5,12 @@ import { ListUsersComponent } from './pages/list-users/list-users/list-users.com
 import { UserInfoComponent } from './pages/user-info/user-info/user-info.component';
 import { UserEditComponent } from './pages/user-edit/user-edit.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: 'users/new', component: AddUserComponent },
-  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
 
   { path: 'users', component: ListUsersComponent },
   { path: 'users/:id', component: UserInfoComponent },

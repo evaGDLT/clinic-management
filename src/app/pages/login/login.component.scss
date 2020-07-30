@@ -1,0 +1,58 @@
+#login {
+    height: 100%;
+    background-image: url(../../../assets/imgs/fondo2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    .login-card {
+        width: 30vw;
+        position: absolute;
+        padding: 3vw;
+        z-index: 3;
+        margin-left: 35vw;
+        margin-top: 25vh;
+        border: 1px solid #2e6885;
+        opacity: 0.9;
+        .login-title {
+            text-align: center;
+            color: #2e6885
+        }
+        .login-content {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            mat-form-field {
+                padding-right: 5vw;
+            }
+        }
+        .buttons {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            .mat-raised-button {
+                background-color: #2e6885;
+                color: white;
+                margin-right: 1vw;
+            }
+        }
+    }
+}
+
+@media(max-width: 774px) {
+    #login {
+        .login-card {
+            margin-top: 25vh;
+            width: 50vw;
+            margin-left: 25vw;
+        }
+    }
+}
+
+@media(max-width: 511px) {
+    #login {
+        .login-card {
+            margin-top: 25vh;
+            width: 80vw;
+            margin-left: 5vw;
+        }
+    }
+}

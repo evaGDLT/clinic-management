@@ -23,7 +23,7 @@
             <p><b>Ciudad:</b> {{user["address"]["city"]}}</p>
         </mat-card-content>
     </mat-card>
-    <mat-card class="card-info">
+    <mat-card *ngIf="typeUser==='patient'" class="card-info">
         <mat-card-header>
             <mat-card-title>Seguros</mat-card-title>
             <mat-card-subtitle>{{user["personalData"]["firstName"]}} {{user["personalData"]["lastName"]}} {{user["personalData"]["secondLastName"]}}</mat-card-subtitle>

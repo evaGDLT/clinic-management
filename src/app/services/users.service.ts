@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Professional } from '../models/Professional.model';
 import { Patient } from '../models/Patient.model';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ import { Patient } from '../models/Patient.model';
 export class UsersService {
   URL = 'http://localhost:3000';//Cambiar esto a variables 
   userType: string;
+  private actualRoute$: BehaviorSubject<Router> = new BehaviorSubject(null);
   private patientsObs$: BehaviorSubject<Patient[]> = new BehaviorSubject(null);
   private professionalsObs$: BehaviorSubject<Professional[]> = new BehaviorSubject(null);
 
