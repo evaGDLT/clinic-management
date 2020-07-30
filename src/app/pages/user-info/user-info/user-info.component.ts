@@ -23,6 +23,7 @@ export class UserInfoComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       if (params.id){
+        this.typeUser = this.userService.getUserType();
         if(this.userService.getUserType() === 'patient'){
           this.userService.getPatientById(params.id).subscribe(
             patient => {

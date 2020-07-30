@@ -3,12 +3,10 @@
         <mat-card-header>
             <mat-card-title>Datos Personales</mat-card-title>
             <mat-card-subtitle>{{user["personalData"]["firstName"]}} {{user["personalData"]["lastName"]}} {{user["personalData"]["secondLastName"]}}</mat-card-subtitle>
-            <mat-card-subtitle>{{user["personalData"]["firstName"]}}</mat-card-subtitle>
-
-
         </mat-card-header>
         <mat-card-content>
-            <p *ngIf="user.type==='patient'"><b>HHC(Número de historia clínica: </b> {{user["personalData"]["NHC"]}}</p>
+            <p *ngIf="typeUser==='patient'"><b>HHC(Número de historia clínica): </b> {{user["personalData"]["NHC"]}}</p>
+            <p *ngIf="typeUser==='professional'"><b>Número de Colegiado: </b> {{user["personalData"]["medicalBoardNumber"]}}</p>
             <p><b>Género: </b> {{user["personalData"]["gender"]}}</p>
             <p><b>NIF/Pasaporte: </b> {{user["personalData"]["NIF"]}}</p>
             <p><b>Fecha nacimiento:</b> {{user["personalData"]["birthdate"]}}</p>

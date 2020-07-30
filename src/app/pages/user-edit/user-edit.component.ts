@@ -27,7 +27,7 @@ export class UserEditComponent implements OnInit {
   user: Patient | Professional;
   id: string;
   DATE_PATTERN = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/;
-  issurances;
+  issurances = new FormArray([]);
 
   constructor(private formBuilder: FormBuilder, 
               private service: UsersService, 
@@ -43,9 +43,9 @@ export class UserEditComponent implements OnInit {
           this.service.getPatientById(params.id).subscribe(
             patient => {
               this.user = patient;
+              this.addIssurances();
               this.createNewUserForm();
-              this.issurances = this.userForm.get('issurances') as FormArray;
-              console.log(this.issurances)
+              //this.issurances = this.userForm.get('issurances') as FormArray;
             }
           );
         }
@@ -69,6 +69,7 @@ export class UserEditComponent implements OnInit {
       return 'Formato inválido';
     }
   }
+
   createNewUserForm(): void {
     if (this.userType === 'patient'){
       this.userForm = this.formBuilder.group({
@@ -88,7 +89,14 @@ export class UserEditComponent implements OnInit {
           number: [this.user.address.number],
           postalCode: [this.user.address.postalCode],
         }),
-        issurances: this.formBuilder.array(this.user["issurances"]),
+        issurances:  this.issurances
+        // this.formBuilder.array([
+        //    this.formBuilder.group({
+        //      name: [null],
+        //      type: [null],
+        //      cardNumber: [null]
+        //    })
+        //  ])
       });
     }
     if (this.userType === 'professional'){
@@ -113,12 +121,12 @@ export class UserEditComponent implements OnInit {
       });
     }
   }
-  addIssurances(): void{
-    this.issurances.push(this.formBuilder.group({
-      name: [null],
-      type: [null],
-      cardNumber: [null]
-    }))
+  addIssurances(){
+    for(let i=0; i<this.user["issurances"].length; i++){
+      this.issurances.push(this.formBuilder.group(this.user["issurances"][i]))
+    }
+    console.log("los issurances");
+    console.log(this.issurances)
   }
   onFormSubmit(form): void{
     if (form.status === 'VALID') {
