@@ -77,4 +77,7 @@ export class UsersService {
   updateProfessional(professional: Professional, id: string): Observable<Professional>{
     return this.http.put<Professional>(this.URL + '/professionals/' + id, professional);
   }
+  deleteAllDoctors(): Observable<Professional[]>{
+    return this.http.delete<Professional[]>(this.URL + '/professionals' + '/deleteDoctors');
+  }
 }

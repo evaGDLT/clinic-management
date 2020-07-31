@@ -57,7 +57,7 @@ export class ListUsersComponent implements OnInit {
     this.userService.setUserType(typeUser);
     this.router.navigate(['/users/' + id + '/edit']);
   }
-
+  
   openDeleteDialog(user, id): void{
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
@@ -75,6 +75,11 @@ export class ListUsersComponent implements OnInit {
         }
         if (user === 'profesional'){
           this.userService.deleteProfessionalById(id).subscribe(() => {
+            this.getUsers();
+          });
+        }
+        if (user === 'medicos'){
+          this.userService.deleteAllDoctors().subscribe(() => {
             this.getUsers();
           });
         }
