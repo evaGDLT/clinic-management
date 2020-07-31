@@ -13,16 +13,17 @@ import { MatDialog } from '@angular/material/dialog';
   encapsulation: ViewEncapsulation.None
 })
 export class ListUsersComponent implements OnInit {
+
   displayedColumnsPatients: string[] = ['NHC', 'Nombre', 'NIF', 'Opciones'];
   displayedColumnsProfessionals: string[] = ['noColegiado', 'Nombre', 'Profesional', 'Opciones'];
-  dataSourcePatients: (Patient)[];
-  dataSourceProfessionals: (Professional)[];
+  dataSourcePatients: Patient[];
+  dataSourceProfessionals: Professional[];
 
   constructor(
-    private userService: UsersService, 
-    private router: Router, 
+    private userService: UsersService,
+    private router: Router,
     public dialog: MatDialog) {}
-  
+
   ngOnInit(): void {
     this.userService.getPatientsObs().subscribe(patients => this.dataSourcePatients = patients);
     this.userService.getProfessionalsObs().subscribe(professionals => this.dataSourceProfessionals = professionals);
@@ -54,8 +55,9 @@ export class ListUsersComponent implements OnInit {
 
   goToEditUser(typeUser, id): void{
     this.userService.setUserType(typeUser);
-    this.router.navigate(['/users/'+ id +'/edit']);
+    this.router.navigate(['/users/' + id + '/edit']);
   }
+
   openDeleteDialog(user, id): void{
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
@@ -69,14 +71,14 @@ export class ListUsersComponent implements OnInit {
         if (user === 'paciente'){
           this.userService.deletePatientById(id).subscribe(() => {
             this.getUsers();
-          })
+          });
         }
         if (user === 'profesional'){
           this.userService.deleteProfessionalById(id).subscribe(() => {
             this.getUsers();
-          })
+          });
         }
       }
-    })
+    });
   }
 }

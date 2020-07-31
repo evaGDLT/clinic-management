@@ -1,3 +1,5 @@
+$darkBlue:#2E6885;
+$lightBlue: #80CEB8;
 #login {
     height: 100%;
     background-image: url(../../../assets/imgs/fondo2.jpg);
@@ -10,11 +12,11 @@
         z-index: 3;
         margin-left: 35vw;
         margin-top: 25vh;
-        border: 1px solid #2e6885;
+        border: 1px solid $darkBlue;
         opacity: 0.9;
         .login-title {
             text-align: center;
-            color: #2e6885
+            color: $darkBlue
         }
         .login-content {
             display: grid;
@@ -29,9 +31,12 @@
             justify-content: center;
             flex-wrap: wrap;
             .mat-raised-button {
-                background-color: #2e6885;
+                background-color: $darkBlue;
                 color: white;
                 margin-right: 1vw;
+            }
+            .arrow-left {
+                cursor: pointer;
             }
         }
     }

@@ -1,19 +1,21 @@
+$darkBlue:#2E6885;
+$lightBlue: #80CEB8;
 #user-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     .card-info {
         margin: 2vw;
         padding: 3vw;
-        border: 1px solid #2e6885;
+        border: 1px solid $darkBlue;
         mat-card-header {
-            color: #2e6885
+            color: $darkBlue
         }
         mat-card-content {
             color: #787878;
         }
         .issurance-div {
             padding: 1vw;
-            border: 1px solid #80CEB8;
+            border: 1px solid $lightBlue;
             margin-bottom: 1vh
         }
     }

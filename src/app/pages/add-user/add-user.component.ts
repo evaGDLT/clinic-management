@@ -11,7 +11,7 @@ import {
   ValidationErrors,
   ValidatorFn
 } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -20,20 +20,24 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+
   userForm: FormGroup;
   userType: string;
-  issurances;
+  issurances: FormArray;
 
   DATE_PATTERN = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/;
+
   constructor( private formBuilder: FormBuilder,
                private service: UsersService,
                private router: Router) {
                }
+
   ngOnInit(): void {
     this.userType = this.service.getUserType();
     this.createNewUserForm();
     this.issurances = this.userForm.get('issurances') as FormArray;
   }
+
   createNewUserForm(): void {
     if (this.userType === 'patient'){
       this.userForm = this.formBuilder.group({
@@ -83,15 +87,16 @@ export class AddUserComponent implements OnInit {
         }),
       });
     }
- 
   }
+
   addIssurances(): void{
     this.issurances.push(this.formBuilder.group({
       name: [null],
       type: [null],
       cardNumber: [null]
-    }))
+    }));
   }
+
   getFormErrorMessage(error: string): string {
     if (error === 'emptyValue'){
       return 'Debe introducir un valor';
@@ -102,7 +107,6 @@ export class AddUserComponent implements OnInit {
   }
 
   onFormSubmit(form): void{
-    console.log(form.value);
     if (form.status === 'VALID') {
       if (this.userType === 'patient'){
         this.service.insertPatient(form.value).subscribe( patient => {
@@ -116,6 +120,5 @@ export class AddUserComponent implements OnInit {
       }
     }
   }
- 
- 
+
 }

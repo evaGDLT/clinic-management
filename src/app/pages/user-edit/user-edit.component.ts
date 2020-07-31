@@ -29,8 +29,8 @@ export class UserEditComponent implements OnInit {
   DATE_PATTERN = /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/;
   issurances = new FormArray([]);
 
-  constructor(private formBuilder: FormBuilder, 
-              private service: UsersService, 
+  constructor(private formBuilder: FormBuilder,
+              private service: UsersService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -45,7 +45,6 @@ export class UserEditComponent implements OnInit {
               this.user = patient;
               this.addIssurances();
               this.createNewUserForm();
-              //this.issurances = this.userForm.get('issurances') as FormArray;
             }
           );
         }
@@ -90,13 +89,6 @@ export class UserEditComponent implements OnInit {
           postalCode: [this.user.address.postalCode],
         }),
         issurances:  this.issurances
-        // this.formBuilder.array([
-        //    this.formBuilder.group({
-        //      name: [null],
-        //      type: [null],
-        //      cardNumber: [null]
-        //    })
-        //  ])
       });
     }
     if (this.userType === 'professional'){
@@ -121,13 +113,13 @@ export class UserEditComponent implements OnInit {
       });
     }
   }
-  addIssurances(){
+
+  addIssurances(): void{
     for(let i=0; i<this.user["issurances"].length; i++){
-      this.issurances.push(this.formBuilder.group(this.user["issurances"][i]))
+      this.issurances.push(this.formBuilder.group(this.user["issurances"][i]));
     }
-    console.log("los issurances");
-    console.log(this.issurances)
   }
+
   onFormSubmit(form): void{
     if (form.status === 'VALID') {
       if (this.userType === 'patient'){

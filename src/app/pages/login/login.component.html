@@ -1,5 +1,5 @@
 <div id="login">
-    <mat-card class="login-card">
+    <mat-card *ngIf="!isRegistering" class="login-card">
         <mat-card-header class="login-title">
             <mat-card-title>Clinic-management</mat-card-title>
             <mat-card-subtitle>Gestionamos sus usuarios</mat-card-subtitle>
@@ -16,7 +16,38 @@
         </mat-card-content>
         <mat-card-actions class="buttons">
             <button mat-raised-button (click)="signIn()">Entrar</button>
-            <button mat-raised-button>Registrarse</button>
+            <button mat-raised-button (click)="signUpbutton()">Registrarse</button>
         </mat-card-actions>
+    </mat-card>
+
+    <mat-card *ngIf="isRegistering" class="login-card">
+        <mat-card-header class="login-title">
+            <mat-card-title>Clinic-management</mat-card-title>
+            <mat-card-subtitle>Gestionamos sus usuarios</mat-card-subtitle>
+        </mat-card-header>
+        <form [formGroup]="userForm">
+            <mat-card-content class="login-content">
+                <h3>Registro de usuario</h3>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-error *ngIf="userForm.get('email').invalid">Debe introducir un valor</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput formControlName="password">
+                    <mat-error *ngIf="userForm.get('password').invalid">Debe introducir un valor</mat-error>
+                </mat-form-field>
+                <!-- <mat-form-field>
+                    <mat-label>Confirma contraseña</mat-label>
+                    <input matInput>
+                </mat-form-field> -->
+            </mat-card-content>
+        </form>
+        <mat-card-actions class="buttons">
+            <mat-icon (click)="goBackButtom()" class="arrow-left">keyboard_arrow_left</mat-icon>
+            <button mat-raised-button type="submit" (click)="onFormSubmit(userForm)">Registrarse</button>
+        </mat-card-actions>
+
     </mat-card>
 </div>

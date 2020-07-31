@@ -1,3 +1,5 @@
+$darkBlue:#2E6885;
+$lightBlue: #80CEB8;
 #edit-user {
     // display: grid;
     // grid-template-rows: 5fr 1fr;
@@ -15,7 +17,7 @@
             font-weight: 700;
         }
         .mat-tab-header {
-            background-color: #80CEB8;
+            background-color: lightBlue;
         }
         .mat-form-field {
             padding-bottom: 3vh;
@@ -38,11 +40,11 @@
         }
         .new-issurance-button {
             margin-left: 0vw;
-            background-color: #80CEB8
+            background-color: $lightBlue
         }
     }
     .mat-raised-button {
-        background-color: #2e6885;
+        background-color: $darkBlue;
         color: white;
         margin-right: 1vw;
         margin-left: 40vw;

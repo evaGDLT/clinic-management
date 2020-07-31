@@ -1,3 +1,5 @@
+$darkBlue:#2E6885;
+$lightBlue: #80CEB8;
 #list-users {
     display: grid;
     grid-template-rows: 5fr 1fr;
@@ -14,7 +16,7 @@
         }
         mat-icon {
             cursor: pointer;
-            color: #2E6885;
+            color: $darkBlue;
         }
         .mat-tab-label {
             padding: 5px;
@@ -22,7 +24,7 @@
             font-weight: 700;
         }
         .mat-tab-header {
-            background-color: #80CEB8;
+            background-color: $lightBlue;
         }
         .buttons {
             margin-top: 3vh;
@@ -34,7 +36,7 @@
         justify-content: flex-start;
         flex-wrap: wrap;
         .mat-raised-button {
-            background-color: #2e6885;
+            background-color: $darkBlue;
             color: white;
             margin-right: 1vw;
         }
